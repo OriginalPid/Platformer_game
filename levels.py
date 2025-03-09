@@ -1,31 +1,31 @@
-from objects import*
-from setting import*
+from objects import *
+from settings import *
 
 level1 = [
     "                                                                      ",
-    "                              -           o              o            ",
-    "          -       -   o                   -              -            ",
-    "                      -              o                                ",
-    "      -         --           --             -          -              ",
-    "        o                 o                     o                o    ",
-    "      ----           -          -       -      -     -       -        ",
-    "                       -                                              ",
-    "                 -          -          --         -      -        -   ",
-    "     o                 o               o                  o           ",
-    "           -         ----     ---        ---    -     - -          0  ",
-    "                                                                - --- ",
-    "   ---     -    -   -      -     -    -                               ",
-    "          o                   o              -         -          o   ", 
-    "              -    -   -    -    -     o     -    -    -    -   -     ",
-    "      ----      o     -    -      -    -----       --             --  ",
-    "          o       -           o --   1          --     --        ---- ", 
-    "      -      -             --        ----           -      o         -", 
-    "         -      o      -       --        --    -     -    ------      ", 
-    "    o       --  --      o    -     --       -             -           ", 
-    "   ---                 --            ---    -     --          ----    ",
-    "        -  -   ---          ---                                       ",
-    "            -     ----                 --     -      --               ",
-    "-----                                                                 ",
+    "                                                                      ",
+    "                                                                      ",
+    "                                                                      ",
+    "                                                                      ",
+    "                                                                      ",
+    "                                                                      ",
+    "  1                                                                   ",
+    " --                                                                   ",
+    "                                                                      ",
+    "                                                                      ",
+    " --                                                                   ",
+    "                                                                      ",
+    "                           o                                          ",
+    " --                        -                                          ",
+    "                        -     -                                       ",
+    "                     -          -                            0        ",
+    "                                  -                                   ",
+    " -- ---- - - - - - -                ------ - - - - - - - - -----      ",
+    "                                                                      ",
+    "                                                                      ",
+    " --                                                                   ",
+    "          o      o     o    o    o        o                           ",
+    "---- -- ------- -- ------- --- ---- -- - ---                          ",
 ]
 
 level1_width = len(level1[0]) * 100
@@ -62,28 +62,27 @@ def camera_config(camera, target_rect):
 camera = Camera(camera_config, level1_width, level1_height)
 
 def draw_level(level: list):
-    global key, chest
-    x = y = 0 
+    x = y = 0
     for row in level:
         for symbol in row:
             if symbol == "-":
-                platform = MapObjects(x, y, 100, 30, platform_image)
+                platform = MapObject(x, y, 100, 30, platform_image)
                 level_objects.add(platform)
                 platforms.add(platform)
             if symbol == "o":
-                coin = MapObjects(x, y, 40, 40, coin_image)
+                coin = MapObject(x, y, 30, 30, coin_image)
                 level_objects.add(coin)
                 coins.add(coin)
             if symbol == "1":
-                key = MapObjects(x, y, 40, 40, key_image)
+                key = MapObject(x, y, 50, 50, key_image)
                 level_objects.add(key)
             if symbol == "0":
-                chest = MapObjects(x, y, 40, 40, chest_image)
+                chest = MapObject(x, y, 60, 60, chest_image)
                 level_objects.add(chest)
-                   
-
             x += 100
         x = 0
         y += 30
-    
+        
     return level_objects, key, chest
+
+

@@ -1,2 +1,2 @@
-# dinogame
-platporme game by pygame
+# platformer_dino
+Platforme game by pygame
