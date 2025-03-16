@@ -3,14 +3,17 @@ from levels import *
 
 pygame.init()
 
-level1_objects, key, chest = draw_level(level1)
+
+level1_objects, key, chest, portal = draw_level(level1)
 player = Player(50, H - 90, 40, 50, 10, player_images)
+portal = MapObject(4500, 1000, 80, 80, portal_image)
 
 level1_objects.add(player)
+level1_objects.add(portal)
 
 game = True
 while game:
-    
+    key_pressed = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game = False
@@ -30,12 +33,19 @@ while game:
     window.blit(coins_txt, (55, 12))
 
     if pygame.sprite.collide_rect(player, key):
-        is_key = True 
-        key.rect.x = -200
+        window.blit(get_key_txt, (50, W // 2))
+        if key_pressed[pygame.K_e]:
+            is_key = True 
+            key.rect.x = -200
 
     if pygame.sprite.collide_rect(player, chest) and is_key:
-        coins_count += 10
-        chest.rect.x = -300
+        window.blit(open_chest, (W // 2 - 300, 50))
+        if key_pressed[pygame.K_e]:
+            coins_count += 20
+            chest.rect.x = -300
+
+    if pygame.sprite.collide_rect(player, chest) and not is_key:
+        window.blit(find_key_txt, (W // 2 - 300, 50))
 
     pygame.display.update()
     clock.tick(FPS)

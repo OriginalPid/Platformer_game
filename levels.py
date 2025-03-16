@@ -9,8 +9,8 @@ level1 = [
     "                                                                      ",
     "                                                                      ",
     "                                                                      ",
-    "  1                                                                   ",
-    " --                                                                   ",
+    "  1                                          m                        ",
+    " -- - - - - - - - - - - - - - - - - - - ----------                    ",
     "                                                                      ",
     "                                                                      ",
     " --                                                                   ",
@@ -79,10 +79,13 @@ def draw_level(level: list):
             if symbol == "0":
                 chest = MapObject(x, y, 60, 60, chest_image)
                 level_objects.add(chest)
+            if symbol == "m":
+                portal = MapObject(x, y, 80,80, portal_image)
+                level_objects.add(portal)
             x += 100
         x = 0
         y += 30
         
-    return level_objects, key, chest
+    return level_objects, key, chest, portal
 
 

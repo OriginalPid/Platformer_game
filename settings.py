@@ -20,6 +20,7 @@ bg = pygame.transform.scale(pygame.image.load("assets/background/level1.png"), (
 
 platform_image = pygame.image.load("assets/background/platform.png")
 
+
 player_images = [
     pygame.image.load("assets/images/player/stand_1.png"),
     pygame.image.load("assets/images/player/stand_2.png"),
@@ -42,8 +43,12 @@ player_images = [
 coin_image = pygame.image.load("assets/images/coin/coin.png")
 key_image = pygame.image.load("assets/images/key/key.png")
 chest_image = pygame.image.load("assets/images/chest/chest.png")
-
+portal_image = pygame.image.load("assets/images/portal/portal1.png")
 """ШРИФТИ"""
 pygame.font.init()
 font1 = pygame.font.Font(None, 50)
 
+"""ТЕКСТИ"""
+find_key_txt = font1.render("ЗНАЙДИ КЛЮЧ", True,(255, 255, 255))
+open_chest = font1.render("Натисни E щоб відкрити!", True,(255, 255, 255))
+get_key_txt = font1.render("Натисни F щоб підібрати",True,(255, 255, 255))
